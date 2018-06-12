@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#e9eaf4</color>
+    <color name="colorPrimaryDark">#b4b5bd</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="tree">#43a047</color>
+    <color name="stack">#263238</color>
+    <color name="queue">#c51162</color>
+    <color name="search">#ffab00</color>
+</resources>
