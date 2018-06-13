@@ -57,6 +57,7 @@ public class Qtsans_Activity extends AppCompatActivity {
         fade.excludeTarget(decor.findViewById(R.id.action_bar_container), true);
         fade.excludeTarget(android.R.id.statusBarBackground,true);
         fade.excludeTarget(android.R.id.navigationBarBackground,true);
+        fade.excludeTarget(R.id.mainlay,true);
 
         getWindow().setEnterTransition(fade);
         getWindow().setExitTransition(fade);

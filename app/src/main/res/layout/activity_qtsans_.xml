@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Qtsans_Activity"
-    android:background="#37474f">
+    android:background="#37474f"
+    android:id="@+id/mainlay">
 
     <RelativeLayout
         android:id="@+id/upper"
