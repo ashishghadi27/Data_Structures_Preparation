@@ -3,12 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Qtsans_Activity">
+    tools:context=".Qtsans_Activity"
+    android:background="#37474f">
 
     <RelativeLayout
         android:id="@+id/upper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         >
 
         <android.support.v4.widget.SwipeRefreshLayout
@@ -22,7 +24,8 @@
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="10dp">
+                android:padding="10dp"
+                >
 
             </android.support.v7.widget.RecyclerView>
 
@@ -43,9 +46,9 @@
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="#1de9b6"
+            android:background="#263238"
             android:scaleType="fitStart"
-            android:src="@drawable/lco"
+            android:src="@drawable/logowhite"
             android:onClick="open_link"
 
             />

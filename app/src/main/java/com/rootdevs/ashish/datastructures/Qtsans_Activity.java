@@ -7,11 +7,12 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.Fade;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
@@ -51,6 +52,14 @@ public class Qtsans_Activity extends AppCompatActivity {
         mSwipeRefresh = (SwipeRefreshLayout)findViewById(R.id.swipeRefreshLayout);
         listItems = new ArrayList<>();
 
+        Fade fade = new Fade();
+        View decor = getWindow().getDecorView();
+        fade.excludeTarget(decor.findViewById(R.id.action_bar_container), true);
+        fade.excludeTarget(android.R.id.statusBarBackground,true);
+        fade.excludeTarget(android.R.id.navigationBarBackground,true);
+
+        getWindow().setEnterTransition(fade);
+        getWindow().setExitTransition(fade);
 
         if(isNetworkAvailable()){
             loadRecyclerViewData();
@@ -141,6 +150,8 @@ public class Qtsans_Activity extends AppCompatActivity {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://courses.learncodeonline.in"));
         startActivity(browserIntent);
     }
+
+
 
 
 }

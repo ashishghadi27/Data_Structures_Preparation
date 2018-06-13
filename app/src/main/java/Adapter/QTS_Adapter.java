@@ -1,8 +1,12 @@
 package Adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.support.v4.app.ActivityOptionsCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,15 +15,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.rootdevs.ashish.datastructures.Qtsans_Activity;
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+import com.rootdevs.ashish.datastructures.MainActivity;
 import com.rootdevs.ashish.datastructures.R;
 
 import java.util.List;
 
 import Interface.ItemClickListener;
 import Model.Qts_list;
-
-import static com.rootdevs.ashish.datastructures.R.color.tree;
 
 public class QTS_Adapter extends RecyclerView.Adapter<QTS_Adapter.MyViewHolder>  {
 
@@ -34,7 +38,7 @@ public class QTS_Adapter extends RecyclerView.Adapter<QTS_Adapter.MyViewHolder> 
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        public TextView title, lh;
+        public TextView title, ans;
         public ImageView imgbutton;
         public CardView cv;
 
@@ -44,13 +48,19 @@ public class QTS_Adapter extends RecyclerView.Adapter<QTS_Adapter.MyViewHolder> 
             imgbutton = (ImageView)view.findViewById(R.id.type_img);
             view.setOnClickListener(this);
             cv = (CardView)view.findViewById(R.id.cv);
-
+            ans = (TextView)view.findViewById(R.id.ans);
+            context = view.getContext();
 
         }
 
 
         @Override
         public void onClick(View v) {
+            Intent intent = new Intent(v.getContext(), MainActivity.class);
+            intent.putExtra("Question", title.getText());
+            intent.putExtra("Answer",ans.getText());
+            ActivityOptionsCompat optionsCompat = ActivityOptionsCompat.makeSceneTransitionAnimation((Activity)context,imgbutton, ViewCompat.getTransitionName(imgbutton));
+            v.getContext().startActivity(intent,optionsCompat.toBundle());
 
         }
     }
@@ -78,8 +88,10 @@ public class QTS_Adapter extends RecyclerView.Adapter<QTS_Adapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
+        YoYo.with(Techniques.Landing).playOn(holder.cv);
         Qts_list list = listItems.get(position);
         holder.title.setText(list.getQts());
+        holder.ans.setText(list.getAns());
 
         if(holder.title.getText().toString().contains("Binary trees"))
         {
